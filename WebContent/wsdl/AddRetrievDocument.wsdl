@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://webservice.filenet.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://webservice.filenet.com" xmlns:intf="http://webservice.filenet.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://webservice.filenet.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="addDocumentToCE">
+    <complexType>
+     <sequence>
+      <element name="documentName" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addDocumentToCEResponse">
+    <complexType>
+     <sequence>
+      <element name="addDocumentToCEReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="testWS">
+    <complexType>
+     <sequence>
+      <element name="a" type="xsd:int"/>
+      <element name="b" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="testWSResponse">
+    <complexType>
+     <sequence>
+      <element name="testWSReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="retrieveDocumentFromCE">
+    <complexType>
+     <sequence>
+      <element name="documentGUID" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="retrieveDocumentFromCEResponse">
+    <complexType>
+     <sequence>
+      <element name="retrieveDocumentFromCEReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="testWSResponse">
+
+      <wsdl:part element="impl:testWSResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="retrieveDocumentFromCEResponse">
+
+      <wsdl:part element="impl:retrieveDocumentFromCEResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addDocumentToCERequest">
+
+      <wsdl:part element="impl:addDocumentToCE" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addDocumentToCEResponse">
+
+      <wsdl:part element="impl:addDocumentToCEResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="testWSRequest">
+
+      <wsdl:part element="impl:testWS" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="retrieveDocumentFromCERequest">
+
+      <wsdl:part element="impl:retrieveDocumentFromCE" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="AddRetrievDocument">
+
+      <wsdl:operation name="addDocumentToCE">
+
+         <wsdl:input message="impl:addDocumentToCERequest" name="addDocumentToCERequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addDocumentToCEResponse" name="addDocumentToCEResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="testWS">
+
+         <wsdl:input message="impl:testWSRequest" name="testWSRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:testWSResponse" name="testWSResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="retrieveDocumentFromCE">
+
+         <wsdl:input message="impl:retrieveDocumentFromCERequest" name="retrieveDocumentFromCERequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:retrieveDocumentFromCEResponse" name="retrieveDocumentFromCEResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="AddRetrievDocumentSoapBinding" type="impl:AddRetrievDocument">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="addDocumentToCE">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addDocumentToCERequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addDocumentToCEResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="testWS">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="testWSRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="testWSResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="retrieveDocumentFromCE">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="retrieveDocumentFromCERequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="retrieveDocumentFromCEResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="AddRetrievDocumentService">
+
+      <wsdl:port binding="impl:AddRetrievDocumentSoapBinding" name="AddRetrievDocument">
+
+         <wsdlsoap:address location="http://localhost:8080/GuidewireFileNet_WS/services/AddRetrievDocument"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

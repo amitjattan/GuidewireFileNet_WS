@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from AddRetrievDocumentService WSDL service -->
+
+  <service name="AddRetrievDocument" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://webservice.filenet.com"/>
+      <parameter name="wsdlServiceElement" value="AddRetrievDocumentService"/>
+      <parameter name="schemaQualified" value="http://webservice.filenet.com"/>
+      <parameter name="wsdlServicePort" value="AddRetrievDocument"/>
+      <parameter name="className" value="com.filenet.webservice.AddRetrievDocument"/>
+      <parameter name="wsdlPortType" value="AddRetrievDocument"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://webservice.filenet.com" xmlns:retNS="http://webservice.filenet.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="addDocumentToCE" qname="operNS:addDocumentToCE" returnQName="retNS:addDocumentToCEReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://webservice.filenet.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:documentName" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://webservice.filenet.com" xmlns:retNS="http://webservice.filenet.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="testWS" qname="operNS:testWS" returnQName="retNS:testWSReturn" returnType="rtns:int" soapAction="">
+        <parameter xmlns:pns="http://webservice.filenet.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:a" type="tns:int"/>
+        <parameter xmlns:pns="http://webservice.filenet.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:b" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://webservice.filenet.com" xmlns:retNS="http://webservice.filenet.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="retrieveDocumentFromCE" qname="operNS:retrieveDocumentFromCE" returnQName="retNS:retrieveDocumentFromCEReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://webservice.filenet.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:documentGUID" type="tns:string"/>
+      </operation>
+      <parameter name="allowedMethods" value="retrieveDocumentFromCE addDocumentToCE testWS"/>
+
+  </service>
+</deployment>
