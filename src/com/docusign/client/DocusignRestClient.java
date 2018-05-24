@@ -99,4 +99,83 @@ public class DocusignRestClient
 		response = DocuSignUtils.getResponseBody(conn);
 		return response;
 	}
+	
+	/**
+	 * @param authenticationHeader
+	 * @param baseURL
+	 * @throws IOException
+	 */
+	public String getDocument()
+			throws IOException {
+		String url;
+		String body;
+		String response;
+		int status;
+		HttpURLConnection conn;
+		String baseURL = "https://demo.docusign.net/restapi/v2/accounts/5091776";//DocuSignUtils.getBaseUrl(authenticationHeader, url);
+		String authenticationHeader = "{ \"Username\": \"amit.kumar4@standard.com\", \"Password\": \"mysic@2018\", \"IntegratorKey\": \"3ede30c4-b703-4c5d-ac71-0c23919808f7\" }";
+		url = baseURL + "/envelopes/6803d2d7-b6ca-49e6-be86-62f1b6a75bf5/documents/1";
+		/*StringWriter stringWriter = new StringWriter();
+		PrintWriter writer = new PrintWriter(stringWriter);
+		writer.println("--AAA");
+		writer.println("Content-Type: application/json");
+		writer.println("Content-Disposition: form-data");
+		writer.println("");
+		writer.println("{");
+		writer.println("\"status\":\"sent\",");
+		writer.println("\"emailBlurb\":\"Please sign the document\",");
+		writer.println("\"emailSubject\": \"Document to be signed\",");
+		writer.println("\"documents\": [{");
+		writer.println("\"matchBoxes\": ["
+				+ "{"
+				+ "\"height\":\"8\","
+				+ "\"pageNumber\":\"1\","
+				+ "\"width\":\"10\","
+				+ "\"xPosition\":\"25\","
+				+ "\"yPosition\":\"25\""
+				+ "}],");
+		writer.println("\"name\": \""
+				+ userName
+				+ "\",");
+		writer.println("\"documentId\":\"1\",");
+		writer.println("\"order\":\"1\"");
+		writer.println("}]"+",");
+		writer.println("\"recipients\": {");
+		writer.println("\"signers\" : [{");
+		writer.println("\"email\": \""
+				+ userEmail
+				+ "\",");
+		writer.println("\"name\": \""
+				+ userName
+				+ "\",");
+		writer.println("\"recipientId\":\"1\"");
+		writer.println("}]");
+		writer.println("}");
+		writer.println("}");
+		writer.println("");
+		writer.println("--AAA");
+		writer.println("Content-Type: application/pdf");
+		writer.println("Content-Disposition: file; filename=\""
+				+ documentGUID
+				+ "\"; documentid=\"1\"");
+		writer.println("");
+
+		body = stringWriter.toString();
+		String reqBody2 = "\r\n" + "--AAA--\r\n\r\n";*/
+		conn = DocuSignUtils.InitializeRequest(url, "GET", null, authenticationHeader);
+		conn = (HttpURLConnection)new URL(url).openConnection();
+		conn.setRequestMethod("GET");
+		conn.setRequestProperty("X-DocuSign-Authentication", authenticationHeader);
+		conn.setDoOutput(true);
+		// write body of the POST request 
+		status = conn.getResponseCode(); // triggers the request
+		if( status != 200 )	// 200 = OK
+		{
+			DocuSignUtils.errorParse(conn, status);
+			return null;
+		}
+		DocuSignUtils.writePDFBytesToFile(conn, "E:\\Users\\amitk.kmr\\Downloads\\Montana State Fund\\new code\\GuidewireFileNet_WS\\1.pdf");
+		//response = DocuSignUtils.getResponseBody(conn);
+		return null;
+	}
 }

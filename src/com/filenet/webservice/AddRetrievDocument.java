@@ -70,6 +70,14 @@ public class AddRetrievDocument {
         return envelopes;
   }
 
+	public String getSignedDocument() throws IOException, GeneralSecurityException{
+
+	        DocusignRestClient  client = new DocusignRestClient();
+	        String envelopes = client.getDocument();
+	        System.out.println(envelopes);
+	        
+	        return envelopes;
+	  }
 
 	public String onDemandDocumentGeneration(String encodedBomXML, String encodedDataXML){
 
@@ -126,6 +134,18 @@ public class AddRetrievDocument {
 	   
 		}
 	
-	
+	public static void main(String[] args){
+		AddRetrievDocument addRetrievDocument = new AddRetrievDocument();
+		try {
+			String str = addRetrievDocument.getSignedDocument();
+			System.out.println(str);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (GeneralSecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 }
