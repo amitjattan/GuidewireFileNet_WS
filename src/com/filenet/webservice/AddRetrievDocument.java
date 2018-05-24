@@ -70,12 +70,10 @@ public class AddRetrievDocument {
         return envelopes;
   }
 
-	public String getSignedDocument() throws IOException, GeneralSecurityException{
+	public String getSignedDocument(String enevelopeID, String documentID) throws IOException, GeneralSecurityException{
 
 	        DocusignRestClient  client = new DocusignRestClient();
-	        String envelopes = client.getDocument();
-	        System.out.println(envelopes);
-	        
+	        String envelopes = client.getDocument(enevelopeID, documentID);
 	        return envelopes;
 	  }
 
@@ -137,7 +135,7 @@ public class AddRetrievDocument {
 	public static void main(String[] args){
 		AddRetrievDocument addRetrievDocument = new AddRetrievDocument();
 		try {
-			String str = addRetrievDocument.getSignedDocument();
+			String str = addRetrievDocument.getSignedDocument("6803d2d7-b6ca-49e6-be86-62f1b6a75bf5","1");
 			System.out.println(str);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
